@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,8 +35,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     GreetingImages(
-                        message = "Happy birthday, Marcos",
-                        from = "From: Camila",
+                        message = getString(R.string.happy_birthday_text),
+                        from = getString(R.string.signature_text),
                     )
                 }
             }
@@ -47,7 +48,7 @@ class MainActivity : ComponentActivity() {
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.padding(8.dp),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
         ){
         Text(
             text = message,
@@ -60,7 +61,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
             fontSize = 36.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.CenterHorizontally)
         )
     }
 }
@@ -93,6 +94,9 @@ fun GreetingImages(message: String, from: String, modifier: Modifier = Modifier)
 @Composable
 fun BirthdayCardPreview() {
     BirthdayCardTheme {
-        GreetingImages(message = "Happy birthday, Marcos", from = "From: Camila")
+        GreetingImages(
+            message = stringResource(R.string.happy_birthday_text),
+            from = stringResource(R.string.signature_text)
+        )
     }
 }
